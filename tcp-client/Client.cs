@@ -22,21 +22,26 @@ class Client
         {
             using TcpClient client = new();
             await client.ConnectAsync(_serverIp, _port);
+            Program.log.Info($"Connected to server on IP: [{_serverIp}], Port: [{_port}]");
             Console.WriteLine("Connected to server.");
-            Program.log.Info("Connected to server.");
 
             NetworkStream stream = client.GetStream();
-            byte[] buffer = Encoding.UTF8.GetBytes("Hello Server, I am a new client!");
+            while (true)
+            {
+                Console.Write("Enter command (CREATE/READ/UPDATE/DELETE key [value]): ");
+                Program.log.Info("Enter command (CREATE/READ/UPDATE/DELETE key [value]): ");
+                string command = Console.ReadLine() ?? "";
+                if (string.IsNullOrWhiteSpace(command)) break;
 
-            await stream.WriteAsync(buffer, 0, buffer.Length);
-            Console.WriteLine("Message sent.");
+                byte[] buffer = Encoding.UTF8.GetBytes(command);
+                await stream.WriteAsync(buffer, 0, buffer.Length);
 
-            // Read response
-            buffer = new byte[1024];
-            int bytesRead = await stream.ReadAsync(buffer, 0, buffer.Length);
-            string response = Encoding.UTF8.GetString(buffer, 0, bytesRead);
-            Console.WriteLine($"Server Response: {response}");
-            Program.log.Debug($"Server Response: {response}");
+                buffer = new byte[1024];
+                int bytesRead = await stream.ReadAsync(buffer, 0, buffer.Length);
+                string response = Encoding.UTF8.GetString(buffer, 0, bytesRead);
+                Console.WriteLine($"Server Response: {response}");
+                Program.log.Debug($"Server Response: {response}");
+            }
         }
         catch (Exception ex)
         {
@@ -44,5 +49,4 @@ class Client
             Program.log.Error($"Error: {ex.Message}");
         }
     }
-
 }
