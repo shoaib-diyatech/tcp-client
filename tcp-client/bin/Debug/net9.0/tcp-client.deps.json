@@ -9,7 +9,8 @@
       "tcp-client/1.0.0": {
         "dependencies": {
           "System.Configuration.ConfigurationManager": "9.0.1",
-          "log4net": "3.0.3"
+          "log4net": "3.0.3",
+          "cache-lib": "1.0.0.0"
         },
         "runtime": {
           "tcp-client.dll": {}
@@ -67,6 +68,14 @@
             "fileVersion": "9.0.124.61010"
           }
         }
+      },
+      "cache-lib/1.0.0.0": {
+        "runtime": {
+          "cache-lib.dll": {
+            "assemblyVersion": "1.0.0.0",
+            "fileVersion": "1.0.0.0"
+          }
+        }
       }
     }
   },
@@ -103,6 +112,11 @@
       "sha512": "sha512-u+4PH6GyDjEsWgcpKp1S/DiyxtGvazNPdaPFR6p6/qZr3TW+oZWvwfHO2H2CSpS4KGl2z2CBfU6eB38PsmoxtA==",
       "path": "system.security.cryptography.protecteddata/9.0.1",
       "hashPath": "system.security.cryptography.protecteddata.9.0.1.nupkg.sha512"
+    },
+    "cache-lib/1.0.0.0": {
+      "type": "reference",
+      "serviceable": false,
+      "sha512": ""
     }
   }
 }

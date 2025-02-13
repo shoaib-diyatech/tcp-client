@@ -21,8 +21,12 @@ class Program
         int portNumber = int.Parse(port);
         Client client = new(ip, portNumber); 
         await client.StartAsync();
-    }
 
+        // CacheHandler.initializeCache();
+        // CacheHandler.addProduct();
+        // CacheHandler.getProduct();
+
+    }
 
     private static void ConfigureLogging()
     {

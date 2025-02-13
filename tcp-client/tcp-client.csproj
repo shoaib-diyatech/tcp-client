@@ -11,6 +11,12 @@
   <ItemGroup>
     <PackageReference Include="log4net" Version="3.0.3" />
     <PackageReference Include="System.Configuration.ConfigurationManager" Version="9.0.1" />
+    <Reference Include="CacheLibrary">
+      <HintPath>libs/cache-lib.dll</HintPath>
+    </Reference>
+    <None Update="libs/cache-lib.dll">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </None>
   </ItemGroup>
 
 </Project>
