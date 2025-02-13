@@ -21,7 +21,7 @@ using CacheLibrary;
                 Description = "This is a sample product."
             };
 
-            cache.Add("product:2", sampleProduct);
+            cache.Add("product:5", sampleProduct);
         }
         public static void getProduct(){
 

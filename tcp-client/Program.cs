@@ -18,13 +18,16 @@ class Program
         Console.WriteLine($"Connecting to TCP-SERVER on IP: [{ip}], Port: [{port}]");
         log.Info($"Connecting to TCP-SERVER on IP: [{ip}], Port: [{port}]");
 
+
+        CacheHandler.initializeCache();
+        CacheHandler.addProduct();
+        CacheHandler.getProduct();
+
         int portNumber = int.Parse(port);
         Client client = new(ip, portNumber); 
         await client.StartAsync();
 
-        // CacheHandler.initializeCache();
-        // CacheHandler.addProduct();
-        // CacheHandler.getProduct();
+
 
     }
 
