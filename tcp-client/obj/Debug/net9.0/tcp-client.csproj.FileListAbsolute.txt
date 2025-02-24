@@ -1,4 +1,3 @@
-D:\Alachisoft work\tcp-client\tcp-client\bin\Debug\net9.0\libs\cache-lib.dll
 D:\Alachisoft work\tcp-client\tcp-client\bin\Debug\net9.0\tcp-client.exe
 D:\Alachisoft work\tcp-client\tcp-client\bin\Debug\net9.0\tcp-client.dll.config
 D:\Alachisoft work\tcp-client\tcp-client\bin\Debug\net9.0\tcp-client.deps.json
@@ -24,3 +23,8 @@ D:\Alachisoft work\tcp-client\tcp-client\obj\Debug\net9.0\refint\tcp-client.dll
 D:\Alachisoft work\tcp-client\tcp-client\obj\Debug\net9.0\tcp-client.pdb
 D:\Alachisoft work\tcp-client\tcp-client\obj\Debug\net9.0\tcp-client.genruntimeconfig.cache
 D:\Alachisoft work\tcp-client\tcp-client\obj\Debug\net9.0\ref\tcp-client.dll
+D:\Alachisoft work\tcp-client\tcp-client\bin\Debug\net9.0\MessagePack.dll
+D:\Alachisoft work\tcp-client\tcp-client\bin\Debug\net9.0\MessagePack.Annotations.dll
+D:\Alachisoft work\tcp-client\tcp-client\bin\Debug\net9.0\Microsoft.NET.StringTools.dll
+D:\Alachisoft work\tcp-client\tcp-client\bin\Debug\net9.0\cache-common.dll
+D:\Alachisoft work\tcp-client\tcp-client\bin\Debug\net9.0\cache-lib.pdb

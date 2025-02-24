@@ -1,46 +1,67 @@
 using System;
 using CacheLibrary;
+using log4net;
+using log4net.Config;
 
-    public class CacheHandler
+public class CacheHandler
+{
+
+    public static readonly ILog log = LogManager.GetLogger(typeof(CacheHandler));
+    public static ICache cache;
+
+    public static void initializeCache()
     {
-        public static ICache cache;
-
-        public static void initializeCache()
-        {
-            cache = new CacheClient("127.0.0.1", 5000, "products");
-            cache.Initialize();
-        }
-
-        public static void addProduct()
-        {
-            Product sampleProduct = new Product
-            {
-                Id = 1,
-                Name = "Sample Product",
-                Price = 99.99m,
-                Description = "This is a sample product."
-            };
-
-            cache.Add("product:5", sampleProduct);
-        }
-        public static void getProduct(){
-
-            // Use the generic Get method for type-safe deserialization.
-            Product retrievedProduct = cache.Get<Product>("product:2");
-
-            if (retrievedProduct != null)
-            {
-                Console.WriteLine("Retrieved Product:");
-                Console.WriteLine($"ID: {retrievedProduct.Id}");
-                Console.WriteLine($"Name: {retrievedProduct.Name}");
-                Console.WriteLine($"Price: {retrievedProduct.Price}");
-                Console.WriteLine($"Description: {retrievedProduct.Description}");
-            }
-            else
-            {
-                Console.WriteLine("Product not found in cache.");
-            }
-            cache.Dispose();
-        }
+        // cache = new CacheClient("127.0.0.1", 5000, "products");
+        cache = new CacheClient(Program.IP, Program.PORT, "products");
+        cache.Initialize();
+        log.Info("Cache Initialized.");
     }
+
+    public static void addProduct()
+    {
+        Product sampleProduct = new Product
+        {
+            Id = 444,
+            Name = "Sample Product",
+            Price = 99.99m,
+            Description = "This is a sample product."
+        };
+
+        cache.Add("product:444", sampleProduct);
+    }
+    public static Product getProduct()
+    {
+
+        // Use the generic Get method for type-safe deserialization.
+        Product retrievedProduct = cache.Get<Product>("product:444");
+
+        if (retrievedProduct != null)
+        {
+            Console.WriteLine("Retrieved Product:");
+            Console.WriteLine($"ID: {retrievedProduct.Id}");
+            Console.WriteLine($"Name: {retrievedProduct.Name}");
+            Console.WriteLine($"Price: {retrievedProduct.Price}");
+            Console.WriteLine($"Description: {retrievedProduct.Description}");
+            return retrievedProduct;
+        }
+        else
+        {
+            Console.WriteLine("Product not found in cache.");
+            return null;
+        }
+        cache.Dispose();
+    }
+    public static void addRandomProduct()
+    {
+        int id = new Random().Next(1, 10000);
+        Product randomProduct = new Product
+        {
+            Id = id,
+            Name = $"Random Product {id}",
+            Price = (decimal)new Random().NextDouble() * 100,
+            Description = $"This is a random product with ID {id}."
+        };
+        cache.Add($"product:{id}", randomProduct);
+    }
+}
 
